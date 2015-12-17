@@ -19,14 +19,17 @@ public class PostResult {
         this.numberOfRowsDeleted = numberOfRowsDeleted;
     }
 
+    @Nullable
     public Integer getNumberOfRowsUpdated() {
         return numberOfRowsUpdated;
     }
 
+    @Nullable
     public Integer getNumberOfRowsInserted() {
         return numberOfRowsInserted;
     }
 
+    @Nullable
     public Integer getNumberOfRowsDeleted() {
         return numberOfRowsDeleted;
     }
