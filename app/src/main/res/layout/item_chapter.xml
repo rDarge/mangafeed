@@ -1,57 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal"
-    android:layout_width="match_parent"
-    android:layout_height="40dp">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="fill_parent"
+                android:layout_height="?android:attr/listPreferredItemHeight"
+                android:background="@drawable/selector_chapter_light">
 
-    <CheckBox
-        android:layout_width="wrap_content"
+
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/chapter_selection"/>
+        android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
+        android:paddingLeft="?android:attr/listPreferredItemPaddingLeft"
+        android:paddingRight="?android:attr/listPreferredItemPaddingRight"
+        android:paddingStart="?android:attr/listPreferredItemPaddingStart">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/chapter_download_image"
-        tools:src="@mipmap/ic_launcher"/>
+        <RelativeLayout
+            android:id="@+id/relativeLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="18dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_weight="1">
+            <TextView
+                android:id="@+id/chapter_pages"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:ellipsize="marquee"
+                android:singleLine="true"
+                android:textSize="12sp"
+                tools:text="Pages: 45"/>
+
+            <TextView
+                android:id="@+id/chapter_date"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:ellipsize="marquee"
+                android:singleLine="true"
+                android:textSize="12sp"
+                tools:text="22/02/2016"/>
+
+            <TextView
+                android:id="@+id/download_text"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:textAllCaps="true"
+                android:textColor="@color/accent_text"
+                android:textSize="12sp"/>
+        </RelativeLayout>
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/chapter_title"
-            tools:text="Chapter 32"
-            android:layout_weight="1"
-            android:layout_gravity="center_vertical"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:textSize="16sp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/chapter_pages"
-            tools:text="Pages: 45"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:textSize="12sp"/>
+            android:layout_above="@+id/relativeLayout"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignWithParentIfMissing="true"
+            android:layout_marginRight="30dp"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:textSize="17sp"
+            tools:text="Title"/>
 
-    </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/chapter_menu"
+        android:layout_width="50dp"
+        android:layout_height="fill_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:gravity="center|end"
+        android:paddingBottom="18dp"
+        android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
+        android:paddingRight="?android:attr/listPreferredItemPaddingRight">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="false"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:background="?android:selectableItemBackground"
+            android:src="@drawable/ic_more_horiz_black_24dp"
+            />
+    </RelativeLayout>
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/chapter_date"
-        tools:text="22/02/2016"
-        android:layout_gravity="bottom"
-        android:layout_marginBottom="2dp"
-        android:textSize="12sp"
-        android:paddingRight="5dp"/>
-</LinearLayout>
+</RelativeLayout>

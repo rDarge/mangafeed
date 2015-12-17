@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <Preference
+        android:title="@string/pref_download_directory"
+        android:key="@string/pref_download_directory_key"/>
+
+    <eu.kanade.mangafeed.ui.setting.preference.IntListPreference
+        android:title="@string/pref_download_slots"
+        android:key="@string/pref_download_slots_key"
+        android:entries="@array/download_slots"
+        android:entryValues="@array/download_slots"
+        android:defaultValue="1"
+        android:summary="%s"/>
+
+</PreferenceScreen>

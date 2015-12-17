@@ -6,13 +6,14 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import eu.kanade.mangafeed.data.caches.CacheManager;
-import eu.kanade.mangafeed.data.helpers.DatabaseHelper;
-import eu.kanade.mangafeed.data.helpers.NetworkHelper;
-import eu.kanade.mangafeed.data.helpers.PreferencesHelper;
-import eu.kanade.mangafeed.data.helpers.SourceManager;
-import rx.Scheduler;
-import rx.schedulers.Schedulers;
+import eu.kanade.mangafeed.data.cache.CacheManager;
+import eu.kanade.mangafeed.data.cache.CoverCache;
+import eu.kanade.mangafeed.data.mangasync.MangaSyncManager;
+import eu.kanade.mangafeed.data.database.DatabaseHelper;
+import eu.kanade.mangafeed.data.download.DownloadManager;
+import eu.kanade.mangafeed.data.network.NetworkHelper;
+import eu.kanade.mangafeed.data.preference.PreferencesHelper;
+import eu.kanade.mangafeed.data.source.SourceManager;
 
 /**
  * Provide dependencies to the DataManager, mainly Helper classes and Retrofit services.
@@ -34,14 +35,14 @@ public class DataModule {
 
     @Provides
     @Singleton
-    Scheduler provideSubscribeScheduler() {
-        return Schedulers.io();
+    CacheManager provideCacheManager(Application app, PreferencesHelper preferences) {
+        return new CacheManager(app, preferences);
     }
 
     @Provides
     @Singleton
-    CacheManager provideCacheManager(Application app) {
-        return new CacheManager(app);
+    CoverCache provideCoverCache(Application app) {
+        return new CoverCache(app);
     }
 
     @Provides
@@ -54,6 +55,19 @@ public class DataModule {
     @Singleton
     SourceManager provideSourceManager(Application app) {
         return new SourceManager(app);
+    }
+
+    @Provides
+    @Singleton
+    DownloadManager provideDownloadManager(
+            Application app, SourceManager sourceManager, PreferencesHelper preferences) {
+        return new DownloadManager(app, sourceManager, preferences);
+    }
+
+    @Provides
+    @Singleton
+    MangaSyncManager provideMangaSyncManager(Application app) {
+        return new MangaSyncManager(app);
     }
 
 }
